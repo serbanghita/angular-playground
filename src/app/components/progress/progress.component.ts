@@ -11,27 +11,7 @@ import {Component, input, computed, ChangeDetectionStrategy} from '@angular/core
       /*border: 1px solid red;*/
       position: relative;
     }`,
-  template: `<div class="progress">
-    <div class="progress-container" [style.width.px]="radius() * 2" [style.height.px]="radius() * 2">
-      <svg viewBox="0 0 100 100">
-        <!-- Background circle -->
-        <circle
-          data-testid="progress-circle-in-background"
-          cx="50" cy="50" r="45"
-          fill="none" [attr.stroke]="color()" [attr.stroke-width]="strokeWidth()" />
-        <!-- Progress circle -->
-        <circle
-          data-testid="progress-circle-in-foreground"
-          cx="50" cy="50" r="45"
-          fill="none" [attr.stroke]="progressColor()"
-          [attr.stroke-width]="strokeWidth()"
-          stroke-linecap="round"
-          [attr.transform]="'rotate(-90 50 50)'"
-          [style.stroke-dasharray]="dashArray"
-          [style.stroke-dashoffset]="dashOffset()" />
-      </svg>
-    </div>
-  </div>`
+  templateUrl: './progress.template.html',
 })
 export class ProgressComponent {
   // This dictates width/height (which imo is not ideal for high-lvl usage).
