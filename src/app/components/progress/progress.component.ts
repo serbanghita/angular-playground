@@ -33,7 +33,7 @@ import {Component, input, computed, ChangeDetectionStrategy} from '@angular/core
     </div>
   </div>`
 })
-export class Progress {
+export class ProgressComponent {
   // This dictates width/height (which imo is not ideal for high-lvl usage).
   // I'd prefer to have predefined sizes: S, M, L or
   // 16, 32, 48, 64, 96, 128

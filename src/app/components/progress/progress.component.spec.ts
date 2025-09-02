@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Progress } from './progress';
+import { ProgressComponent } from './progress.component';
 import {provideZonelessChangeDetection } from '@angular/core';
 
 describe('Progress Component', () => {
-  let component: Progress;
-  let fixture: ComponentFixture<Progress>;
+  let component: ProgressComponent;
+  let fixture: ComponentFixture<ProgressComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Progress],
+      imports: [ProgressComponent],
       providers: [
         provideZonelessChangeDetection()
       ]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Progress);
+    fixture = TestBed.createComponent(ProgressComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
