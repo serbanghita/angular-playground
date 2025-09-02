@@ -3,6 +3,7 @@ import {Component, input, computed, ChangeDetectionStrategy} from '@angular/core
 @Component({
   selector: 't-progress',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
   styles: `
     .progress {
 
@@ -14,10 +15,14 @@ import {Component, input, computed, ChangeDetectionStrategy} from '@angular/core
   templateUrl: './progress.template.html',
 })
 export class ProgressComponent {
+  static MIN_RADIUS = 50;
+
   // This dictates width/height (which imo is not ideal for high-lvl usage).
   // I'd prefer to have predefined sizes: S, M, L or
   // 16, 32, 48, 64, 96, 128
-  radius = input<number>(50);
+  radius = input<number, number>(ProgressComponent.MIN_RADIUS, {
+    transform: (value) => Math.max(ProgressComponent.MIN_RADIUS, value)
+  });
   progress = input<number>(0);
 
   // Styling
@@ -34,17 +39,20 @@ export class ProgressComponent {
   dashArray: string = `${this.circumference} ${this.circumference}`;
 
   dashOffset = computed(() => {
-    return (this.circumference - (this.progress() / 100) * this.circumference).toString();
+    // Don't go below 0 or above 100.
+    const boundedProgress = Math.max(0, Math.min(100, this.progress()));
+    return (this.circumference - (boundedProgress / 100) * this.circumference).toString();
+    // return (this.circumference - (this.progress() / 100) * this.circumference).toString();
   });
 
 
-  ngOnInit() {
-    //console.log('ngOnInit');
-    if (this.radius() < 50) {
-      throw new Error(`Radius must be set above 50.`);
-    }
-    if (this.progress() < 0 || this.progress() > 100) {
-      throw new Error(`Progress was set out of bounds. Must be between 0 and 100.`);
-    }
-  }
+  // ngOnInit() {
+  //   //console.log('ngOnInit');
+  //   if (this.radius() < 50) {
+  //     throw new Error(`Radius must be set above 50.`);
+  //   }
+  //   if (this.progress() < 0 || this.progress() > 100) {
+  //     throw new Error(`Progress was set out of bounds. Must be between 0 and 100.`);
+  //   }
+  // }
 }
