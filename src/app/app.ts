@@ -1,12 +1,12 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Progress} from './components/progress/progress';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [Progress],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('serban-app');
+
 }

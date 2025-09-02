@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circular Progress Loader</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
+    }
+
+    .progress-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+    }
+
+    .progress-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input[type="range"] {
+      margin-top: 30px;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+<div style="text-align: center;">
+  <div class="progress-container">
+    <svg width="200" height="200" viewBox="0 0 100 100">
+      <!-- Background circle -->
+      <circle cx="50" cy="50" r="45" fill="none" stroke="#e0e0e0" stroke-width="10" />
+      <!-- Progress circle -->
+      <circle id="progress-circle" cx="50" cy="50" r="45" fill="none" stroke="#4285f4"
+              stroke-width="10" stroke-linecap="round"
+              transform="rotate(-90 50 50)" />
+    </svg>
+    <div class="progress-text">0%</div>
+  </div>
+
+  <br>
+  <input type="range" id="progress-slider" min="0" max="100" value="0">
+  <div>Drag to change progress</div>
+</div>
+
+<script>
+  const progressCircle = document.getElementById('progress-circle');
+  const progressText = document.querySelector('.progress-text');
+  const slider = document.getElementById('progress-slider');
+
+  // Update progress when slider changes
+  slider.addEventListener('input', function() {
+    const progress = this.value;
+    updateProgress(progress);
+  });
+
+  function updateProgress(percent) {
+    // Calculate the circumference: 2 * π * r
+    const circumference = 2 * Math.PI * 45;
+
+    // Calculate the stroke dashoffset
+    const offset = circumference - (percent / 100) * circumference;
+
+    // Update the circle
+    progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+    progressCircle.style.strokeDashoffset = offset;
+
+    // Update the text
+    progressText.textContent = `${percent}%`;
+  }
+
+  // Initialize
+  updateProgress(0);
+</script>
+</body>
+</html>
