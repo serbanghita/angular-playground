@@ -1,0 +1,16 @@
+.table-flex-row {
+  display: flex;
+}
+
+/* Styling for every cell inside a row */
+.table-flex-row > div,
+.table-flex-header .table-flex-th {
+  flex: 1; /* This makes each cell take up an equal amount of space */
+  border: 1px solid #ccc;
+  padding: 1em;
+}
+
+.table-flex-header {
+  font-weight: bold;
+  background-color: #f2f2f2;
+}

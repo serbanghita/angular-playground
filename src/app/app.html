@@ -1,3 +1,16 @@
 <t-progress [radius]="50" [progress]="22" color="#efefef" progressColor="#0000ff"></t-progress>
 
-<t-grid></t-grid>
+<t-grid [data]="[
+      { id: 1, name: 'Item One', color: 'red' },
+      { id: 2, name: 'Item Two', color: 'blue' },
+      { id: 3, name: 'Item Three', color: 'green' },
+      { id: 4, name: 'Item Four', color: 'orange' },
+      { id: 5, name: 'Item Five', color: 'violet' },
+      { id: 6, name: 'Item Six', color: 'purple' },
+      { id: 7, name: 'Item Seven', color: 'teal' },
+      { id: 8, name: 'Item Eight', color: 'salmon' }
+    ]" (paginationChange)="performFetch($event)">
+  <t-column name="ID" property="id"></t-column>
+  <t-column name="Product Name" property="name"></t-column>
+  <t-column name="Available Color" property="color" [sortable]="false"></t-column>
+</t-grid>
