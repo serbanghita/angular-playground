@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SortDirection } from './grid.types';
+import { SortDirection } from '../grid.types';
 
 @Component({
   selector: 't-grid-header',
@@ -14,7 +14,7 @@ import { SortDirection } from './grid.types';
   `,
   host: {
     class: 'table-flex-th',
-    '[class.sortable]': 'isSortable()', // Add class for cursor styling.
+    '[class.sortable]': 'isSortable()',
     '(click)': 'onClick()',
   },
   styles: [`

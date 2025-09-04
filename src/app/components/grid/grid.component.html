@@ -1,5 +1,5 @@
 @if (data$ | async; as items) {
-  @if (items.length > 0) {
+  @if (totalItems() > 0) {
     <div class="table-flex">
       <div class="table-flex-row table-flex-header">
         @for (column of columns(); track column.property()) {
@@ -23,6 +23,11 @@
         }
       </div>
     </div>
+    <t-grid-pagination
+      [currentPage]="currentPage()"
+      [total]="totalItems()"
+      [pageSize]="pageSize()" (paginationChange)="onPaginationChange($event)">
+    </t-grid-pagination>
   } @else {
     <p>No items to display.</p>
   }

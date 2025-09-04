@@ -2,10 +2,9 @@
   display: flex;
 }
 
-/* Styling for every cell inside a row */
 .table-flex-row > div,
 .table-flex-header .table-flex-th {
-  flex: 1; /* This makes each cell take up an equal amount of space */
+  flex: 1;
   border: 1px solid #ccc;
   padding: 1em;
 }

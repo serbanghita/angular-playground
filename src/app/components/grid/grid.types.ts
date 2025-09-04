@@ -4,8 +4,8 @@ export interface GridItem {
 }
 
 export interface GridSortChangeEvent {
-  sortKey: string;
-  sortDirection: SortDirection;
+  columnName: string;
+  direction: SortDirection;
 }
 
 export enum SortDirection {

@@ -1,0 +1,25 @@
+<div class="pagination-container">
+  <div class="page-size-selector">
+    <label for="pageSize">Page Size:</label>
+    <select id="pageSize" [value]="pageSize() ?? 'null'" (change)="onPageSizeChange($event)">
+      <option value="10">10</option>
+      <option value="25">25</option>
+      <option value="50">50</option>
+      <option value="null">All</option>
+    </select>
+  </div>
+
+  <span class="pagination-summary">
+    {{ startItem() }} - {{ endItem() }} of {{ total() }}
+  </span>
+
+  <div class="pagination-controls">
+    <button (click)="onPageChange(currentPage() - 1)" [disabled]="isFirstPage()">
+      Back
+    </button>
+    <span>Page {{ currentPage() }} of {{ totalPages() }}</span>
+    <button (click)="onPageChange(currentPage() + 1)" [disabled]="isLastPage()">
+      Forward
+    </button>
+  </div>
+</div>
