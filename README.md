@@ -8,6 +8,8 @@
 
 ### Components
 
+Used https://angular.dev/ai/develop-with-ai (`best-practices.md` for LLM context to review the code for Angular best practices).
+
 * [Progress Component](src/app/components/progress/progress.component.ts)
 * [Grid Component](src/app/components/grid/grid.component.ts)
   * Kept the component dumb, it receives "API" items data from `ItemsService` + pagination information to render `PaginationComponent`
