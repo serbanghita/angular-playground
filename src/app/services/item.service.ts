@@ -76,7 +76,7 @@ export class ItemService {
             pageSize,
           },
         });
-      }, 2000);
+      }, 1000);
     });
   }
 }
