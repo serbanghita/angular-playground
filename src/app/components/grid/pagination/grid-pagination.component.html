@@ -2,6 +2,7 @@
   <div class="page-size-selector">
     <label for="pageSize">Page Size:</label>
     <select id="pageSize" [value]="pageSize() ?? 'null'" (change)="onPageSizeChange($event)">
+      <option value="5">5</option>
       <option value="10">10</option>
       <option value="25">25</option>
       <option value="50">50</option>

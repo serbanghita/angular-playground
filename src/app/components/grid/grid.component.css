@@ -13,3 +13,7 @@
   font-weight: bold;
   background-color: #f2f2f2;
 }
+
+#grid-component-items-container {
+  position: relative;
+}

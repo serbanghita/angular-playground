@@ -3,6 +3,11 @@ export interface GridItem {
   [key: string]: any;
 }
 
+export interface GridData<T> {
+  items: T[];
+  total: number;
+}
+
 export interface GridSortChangeEvent {
   columnName: string;
   direction: SortDirection;
