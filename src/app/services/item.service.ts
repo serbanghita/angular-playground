@@ -16,6 +16,9 @@ export interface PaginatedResponse<T> {
   };
 }
 
+// Simulate we have a server where we request
+// the items based on pagination (from GridComponent).
+// (delay involved, to see the loading state)
 @Injectable({
   providedIn: 'root',
 })

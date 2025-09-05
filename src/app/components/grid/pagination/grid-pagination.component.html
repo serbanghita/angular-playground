@@ -1,7 +1,7 @@
 <div class="pagination-container">
-  <div class="page-size-selector">
+  <div class="page-size-selector" data-testid="page-size-selector">
     <label for="pageSize">Page Size:</label>
-    <select id="pageSize" [value]="pageSize() ?? 'null'" (change)="onPageSizeChange($event)">
+    <select id="pageSize" [value]="pageSize() ?? 5" [disabled]="total() < 5" (change)="onPageSizeChange($event)" data-testid="page-size-selector-select">
       <option value="5">5</option>
       <option value="10">10</option>
       <option value="25">25</option>
@@ -10,16 +10,16 @@
     </select>
   </div>
 
-  <span class="pagination-summary">
+  <span class="pagination-summary" data-testid="pagination-summary">
     {{ startItem() }} - {{ endItem() }} of {{ total() }}
   </span>
 
-  <div class="pagination-controls">
-    <button (click)="onPageChange(currentPage() - 1)" [disabled]="isFirstPage()">
+  <div class="pagination-controls" data-testid="pagination-controls">
+    <button (click)="onPageChange(currentPage() - 1)" [disabled]="isFirstPage()" data-testid="pagination-back">
       Back
     </button>
     <span>Page {{ currentPage() }} of {{ totalPages() }}</span>
-    <button (click)="onPageChange(currentPage() + 1)" [disabled]="isLastPage()">
+    <button (click)="onPageChange(currentPage() + 1)" [disabled]="isLastPage()" data-testid="pagination-forward">
       Forward
     </button>
   </div>

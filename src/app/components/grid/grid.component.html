@@ -1,6 +1,6 @@
 @if (data$ | async; as items) {
   @if (totalItems() > 0) {
-    <div class="table-flex" id="grid-component-container">
+    <div class="table-flex" id="grid-component-container" data-testid="grid-container">
       <div class="table-flex-row table-flex-header">
         @for (column of columns(); track column.property()) {
           <t-grid-header
@@ -15,7 +15,7 @@
       </div>
       <div class="table-flex-body" id="grid-component-items-container">
         @for (item of items; track item.id) {
-          <div class="table-flex-row">
+          <div class="table-flex-row" data-testid="grid-row">
             @for (column of columns(); track column.property()) {
               <div>{{ item[column.property()] }}</div>
             }
@@ -27,9 +27,9 @@
       [currentPage]="currentPage()"
       [total]="totalItems()"
       [pageSize]="pageSize()"
-      (paginationChange)="onPaginationChange($event)">
+      (paginationChange)="onPaginationChange($event)" data-testid="grid-pagination">
     </t-grid-pagination>
   } @else {
-    <p>No items to display.</p>
+    <p data-testid="no-items-message">No items to display.</p>
   }
 }

@@ -4,15 +4,8 @@ import {Component, input, computed, ChangeDetectionStrategy} from '@angular/core
   selector: 't-progress',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  styles: `
-    .progress {
-
-    }
-    .progress-container {
-      /*border: 1px solid red;*/
-      position: relative;
-    }`,
-  templateUrl: './progress.template.html',
+  styleUrl: './progress.component.css',
+  templateUrl: './progress.component.html',
 })
 export class ProgressComponent {
   static MIN_RADIUS = 50;
@@ -45,14 +38,4 @@ export class ProgressComponent {
     // return (this.circumference - (this.progress() / 100) * this.circumference).toString();
   });
 
-
-  // ngOnInit() {
-  //   //console.log('ngOnInit');
-  //   if (this.radius() < 50) {
-  //     throw new Error(`Radius must be set above 50.`);
-  //   }
-  //   if (this.progress() < 0 || this.progress() > 100) {
-  //     throw new Error(`Progress was set out of bounds. Must be between 0 and 100.`);
-  //   }
-  // }
 }
